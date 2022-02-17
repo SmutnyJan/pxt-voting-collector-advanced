@@ -15,10 +15,10 @@ input.onButtonPressed(Button.A, function () {
             pocetD += 1
         }
     }
-    basic.showString("A" + pocetA)
-    basic.showString("B" + pocetB)
-    basic.showString("C" + pocetD)
-    basic.showString("D" + pocetC)
+    basic.showString("ANO" + pocetA)
+    basic.showString("NE" + pocetB)
+    basic.showString("MOZNA" + pocetD)
+    basic.showString("NEVIM" + pocetC)
 })
 input.onButtonPressed(Button.B, function () {
     Server.NoveHlasovani()
