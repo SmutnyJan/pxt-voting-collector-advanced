@@ -32,7 +32,8 @@ namespace Server {
     //% block="Zaznamenej hlas %hlas se seriovým číslem %serioveCislo"
 
     export function ZaznamenatHlas(hlas: string, serioveCislo: number): void {
-        let contains = false
+        hlas = MyToUpperCase(hlas)
+        let contains = false      
         for (let number of serialNumbers) {
             if (number == serioveCislo) {
                 contains = true
@@ -55,6 +56,24 @@ namespace Server {
         return answers
     }
 
+    function MyToUpperCase(text: string): string {
+        switch (text) {
+            case "a":
+                return "A"
+                break
+            case "b":
+                return "B"
+                break
+            case "c":
+                return "C"
+                break
+            case "d":
+                return "D"
+                break
+            default:
+                return text   
+        }
+    }
 
 
 }
