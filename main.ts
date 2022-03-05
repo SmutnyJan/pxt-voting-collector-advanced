@@ -1,5 +1,5 @@
 input.onButtonPressed(Button.A, function () {
-    odpovedi = Server.GetOdpovedi()
+    odpovedi = Server.getOdpovedi()
     pocetD = 0
     pocetC = 0
     pocetB = 0
@@ -21,10 +21,10 @@ input.onButtonPressed(Button.A, function () {
     basic.showString("NEVIM" + pocetC)
 })
 input.onButtonPressed(Button.B, function () {
-    Server.NoveHlasovani()
+    Server.noveHlasovani()
 })
 radio.onReceivedValue(function (name, value) {
-    Server.ZaznamenatHlas(name, value)
+    Server.zaznamenatHlas(name, value)
 })
 let pocetA = 0
 let pocetB = 0

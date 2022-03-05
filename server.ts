@@ -21,7 +21,7 @@ namespace Server {
     */
     //% block="Spusť nové hlasování"
 
-    export function NoveHlasovani(): void {
+    export function noveHlasovani(): void {
         answers = []
         serialNumbers = []
     }
@@ -31,8 +31,8 @@ namespace Server {
     */
     //% block="Zaznamenej hlas %hlas se seriovým číslem %serioveCislo"
 
-    export function ZaznamenatHlas(hlas: string, serioveCislo: number): void {
-        hlas = MyToUpperCase(hlas)
+    export function zaznamenatHlas(hlas: string, serioveCislo: number): void {
+        hlas = myToUpperCase(hlas)
         let contains = false      
         for (let number of serialNumbers) {
             if (number == serioveCislo) {
@@ -52,11 +52,11 @@ namespace Server {
     */
     //% block="Získej odpovědi"
 
-    export function GetOdpovedi(): string[] {
+    export function getOdpovedi(): string[] {
         return answers
     }
 
-    function MyToUpperCase(text: string): string {
+    function myToUpperCase(text: string): string {
         switch (text) {
             case "a":
                 return "A"
