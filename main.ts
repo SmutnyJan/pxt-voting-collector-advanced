@@ -1,5 +1,5 @@
 input.onButtonPressed(Button.A, function () {
-    odpovedi = Server.getOdpovedi()
+    odpovedi = Server.ziskatOdpovedi()
     pocetD = 0
     pocetC = 0
     pocetB = 0

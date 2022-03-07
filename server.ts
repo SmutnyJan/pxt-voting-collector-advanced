@@ -1,17 +1,7 @@
-/**
- * Použijte tento soubor k definování personalizovaných funkcí a bloků.
- * Přečtěte si více na https://makecode.microbit.org/blocks/custom
- */
-
-
-/**
- * Custom blocks
- */
-//% weight=100 color=#3bccc0 icon="\uf233"
+//% weight=100 color=#3bccc0 icon="\uf233" block="Server"
 namespace Server {
-
-    let serialNumbers: number[] = []
-    let answers: string[] = []
+    let seriovaCisla: number[] = []
+    let odpovedi: string[] = []
 
 
 
@@ -22,28 +12,30 @@ namespace Server {
     //% block="Spusť nové hlasování"
 
     export function noveHlasovani(): void {
-        answers = []
-        serialNumbers = []
+        odpovedi = []
+        seriovaCisla = []
     }
 
     /**
     * Zaznamená nový hlas
+    * @hlas Hlas k zaznamenání
+    * @serioveCislo Sériové číslo odesílatele
     */
     //% block="Zaznamenej hlas %hlas se seriovým číslem %serioveCislo"
 
     export function zaznamenatHlas(hlas: string, serioveCislo: number): void {
-        hlas = myToUpperCase(hlas)
+        hlas = prevedNaVetsiPismo(hlas)
         let contains = false      
-        for (let number of serialNumbers) {
+        for (let number of seriovaCisla) {
             if (number == serioveCislo) {
                 contains = true
             }
         }
         if (contains == false) {
-            answers.push(hlas)
-            serialNumbers.push(serioveCislo)
+            odpovedi.push(hlas)
+            seriovaCisla.push(serioveCislo)
         } else {
-            answers[serialNumbers.indexOf(serioveCislo)] = hlas
+            odpovedi[seriovaCisla.indexOf(serioveCislo)] = hlas
         }
     }
 
@@ -52,11 +44,11 @@ namespace Server {
     */
     //% block="Získej odpovědi"
 
-    export function getOdpovedi(): string[] {
-        return answers
+    export function ziskatOdpovedi(): string[] {
+        return odpovedi
     }
 
-    function myToUpperCase(text: string): string {
+    function prevedNaVetsiPismo(text: string): string {
         switch (text) {
             case "a":
                 return "A"
