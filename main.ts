@@ -20,11 +20,11 @@ input.onButtonPressed(Button.A, function () {
     basic.showString("MOZNA" + pocetD)
     basic.showString("NEVIM" + pocetC)
 })
+radio.onReceivedString(function (receivedString) {
+    Server.zaznamenatHlas(receivedString, radio.receivedPacket(RadioPacketProperty.SerialNumber))
+})
 input.onButtonPressed(Button.B, function () {
     Server.noveHlasovani()
-})
-radio.onReceivedValue(function (name, value) {
-    Server.zaznamenatHlas(name, value)
 })
 let pocetA = 0
 let pocetB = 0
