@@ -4,8 +4,6 @@ namespace Server {
     let odpovedi: string[] = []
 
 
-
-
     /**
     * Spustí nové hlasování a smaže uložená data
     */
@@ -24,6 +22,10 @@ namespace Server {
     //% block="Zaznamenej hlas %hlas se seriovým číslem %serioveCislo"
 
     export function zaznamenatHlas(hlas: string, serioveCislo: number): void {
+        if (serioveCislo == 0) {
+            return
+        }
+        
         hlas = prevedNaVetsiPismo(hlas)
         let contains = false      
         for (let number of seriovaCisla) {
