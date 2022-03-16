@@ -1,7 +1,7 @@
 //% weight=100 color=#3bccc0 icon="\uf233" block="Server"
-namespace Server {
-    let seriovaCisla: number[] = []
-    let odpovedi: string[] = []
+namespace server {
+    let serialNumbers: number[] = []
+    let answers: string[] = []
 
 
     /**
@@ -9,35 +9,35 @@ namespace Server {
     */
     //% block="Spusť nové hlasování"
 
-    export function noveHlasovani(): void {
-        odpovedi = []
-        seriovaCisla = []
+    export function newVoting(): void {
+        answers = []
+        serialNumbers = []
     }
 
     /**
     * Zaznamená nový hlas
-    * @hlas Hlas k zaznamenání
-    * @serioveCislo Sériové číslo odesílatele
+    * @vote Hlas k zaznamenání
+    * @serialNumber Sériové číslo odesílatele
     */
-    //% block="Zaznamenej hlas %hlas se seriovým číslem %serioveCislo"
+    //% block="Zaznamenej hlas %vote se seriovým číslem %serialNumber"
 
-    export function zaznamenatHlas(hlas: string, serioveCislo: number): void {
-        if (serioveCislo == 0) {
+    export function addVote(vote: string, serialNumber: number): void {
+        if (serialNumber == 0) {
             return
         }
         
-        hlas = prevedNaVetsiPismo(hlas)
+        vote = toUpperCase(vote)
         let contains = false      
-        for (let number of seriovaCisla) {
-            if (number == serioveCislo) {
+        for (let number of serialNumbers) {
+            if (number == serialNumber) {
                 contains = true
             }
         }
         if (contains == false) {
-            odpovedi.push(hlas)
-            seriovaCisla.push(serioveCislo)
+            answers.push(vote)
+            serialNumbers.push(serialNumber)
         } else {
-            odpovedi[seriovaCisla.indexOf(serioveCislo)] = hlas
+            answers[serialNumbers.indexOf(serialNumber)] = vote
         }
     }
 
@@ -46,11 +46,11 @@ namespace Server {
     */
     //% block="Získej odpovědi"
 
-    export function ziskatOdpovedi(): string[] {
-        return odpovedi
+    export function currentAnswers(): string[] {
+        return answers
     }
 
-    function prevedNaVetsiPismo(text: string): string {
+    function toUpperCase(text: string): string {
         switch (text) {
             case "a":
                 return "A"

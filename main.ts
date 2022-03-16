@@ -1,5 +1,5 @@
 input.onButtonPressed(Button.A, function () {
-    odpovedi = Server.ziskatOdpovedi()
+    odpovedi = server.currentAnswers()
     pocetD = 0
     pocetC = 0
     pocetB = 0
@@ -17,14 +17,14 @@ input.onButtonPressed(Button.A, function () {
     }
     basic.showString("ANO" + pocetA)
     basic.showString("NE" + pocetB)
-    basic.showString("MOZNA" + pocetD)
-    basic.showString("NEVIM" + pocetC)
+    basic.showString("MOZNA" + pocetC)
+    basic.showString("NEVIM" + pocetD)
 })
 radio.onReceivedString(function (receivedString) {
-    Server.zaznamenatHlas(receivedString, radio.receivedPacket(RadioPacketProperty.SerialNumber))
+    server.addVote(receivedString, radio.receivedPacket(RadioPacketProperty.SerialNumber))
 })
 input.onButtonPressed(Button.B, function () {
-    Server.noveHlasovani()
+    server.newVoting()
 })
 let pocetA = 0
 let pocetB = 0
