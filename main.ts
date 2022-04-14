@@ -15,10 +15,10 @@ input.onButtonPressed(Button.A, function () {
             pocetD += 1
         }
     }
-    basic.showString("ANO" + pocetA)
-    basic.showString("NE" + pocetB)
-    basic.showString("MOZNA" + pocetC)
-    basic.showString("NEVIM" + pocetD)
+    basic.showString("A" + pocetA)
+    basic.showString("B" + pocetB)
+    basic.showString("C" + pocetC)
+    basic.showString("D" + pocetD)
 })
 radio.onReceivedString(function (receivedString) {
     server.addVote(receivedString, radio.receivedPacket(RadioPacketProperty.SerialNumber))
